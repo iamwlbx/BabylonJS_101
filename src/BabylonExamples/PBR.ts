@@ -107,7 +107,7 @@ export class PBR {
     pbr.metallicTexture = new Texture("./textures/magic/magic_ao_rough_metal.png", this.scene);
     pbr.emissiveColor = new Color3(1, 0, 0);
     // 设置了 PBR 材质的自发光纹理   这个纹理来定义物体的自发光部分
-    pbr.emissiveTexture = new Texture("./textures/magic/magic_emissive.png");
+    pbr.emissiveTexture = new Texture("./textures/magic/magic_emissive.png", this.scene);
     pbr.emissiveIntensity = 1;
     const glowLayer = new GlowLayer("glow", this.scene)
     glowLayer.intensity = 0.3
