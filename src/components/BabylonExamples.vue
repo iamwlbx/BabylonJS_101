@@ -36,14 +36,13 @@ canvas {
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { StandardMaterials } from "@/BabylonExamples/StandardMaterials";
+import { CustomModels } from "@/BabylonExamples/CustomModels";
 
 export default defineComponent({
   name: "BabylonExamples",
-
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement; // !让vue知道这不会是空的
-    new StandardMaterials(canvas); // if(canvas){ new BasicScene(canvas) }
+    new CustomModels(canvas); // if(canvas){ new BasicScene(canvas) }
   },
 });
 </script>

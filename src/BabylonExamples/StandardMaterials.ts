@@ -9,6 +9,12 @@ import {
   Texture,
 } from "@babylonjs/core";
 
+// diffuse-Tex：漫反射纹理。 =>包含了物体表面的颜色信息
+// normal-Tex：法线纹理。   =>往外凸还是往里凹,根据实际情况决定是否反转
+// ao-Tex：环境遮蔽（Ambient Occlusion）纹理。
+// spec-Tex：高光（Specular）纹理。
+
+
 export class StandardMaterials {
   scene: Scene;
   engine: Engine;
