@@ -112,7 +112,7 @@ export class LightsShadows {
     spotLight.shadowEnabled = true
     spotLight.shadowMinZ = 1;
     spotLight.shadowMaxZ = 10;
-    const shadowGen = new ShadowGenerator(1024, spotLight)
+    const shadowGen = new ShadowGenerator(2048, spotLight)
     shadowGen.useBlurCloseExponentialShadowMap = true // 提供一个过滤器
 
     // this.ball.receiveShadows = true;
