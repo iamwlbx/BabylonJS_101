@@ -1,80 +1,25 @@
-<!-- <template>
-  <div>
-    <h3>Babylon Examples</h3>
-    <canvas></canvas>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-// import { BasicScene } from '@/BabylonExamples/BasicScene'
-import { StandardMaterials } from "@/BabylonExamples/StandardMaterials";
-
-export default defineComponent({
-  name: "BabylonExamples",
-
-  mounted() {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement; //!让vue知道这不会是空的
-    new StandardMaterials(canvas); //if(canvas){ new BasicScene(canvas) }
-  },
-});
-</script>
-
- Add "scoped" attribute to limit CSS to this component only 
-<style scoped>
-canvas {
-  width: 70%;
-  height: 70%;
-}
-</style> -->
-
 <template>
   <main>
-    <!-- <div id="loader">
-      <p>Loading</p>
-
-      <div id="loadingContainer">
-        <div id="loadingBar"></div>
-      </div>
-
-      <p id="percentLoaded">25%</p>
-    </div> -->
-    <LoadingScreen :isLoaded="loaded" />
-    <p>Custom Loading Screen</p>
+    <p>First Person Controller</p>
     <canvas></canvas>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CustomLoading } from "@/BabylonExamples/CustomLoading";
-import LoadingScreen from "./LoadingScreen.vue";
+import { CameraMechanics } from "@/BabylonExamples/CameraMechanics";
+
 export default defineComponent({
   name: "BabylonExamples",
 
-  data() {
-    return {
-      loaded: false,
-    };
-  },
-  components: { LoadingScreen },
   mounted() {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement; // !让vue知道这不会是空的
-    const stage = new CustomLoading(canvas, this.setLoaded); // if(canvas){ new BasicScene(canvas) }
-    // const loader = document.getElementById("loader") as HTMLElement;
-    // const loadingBar = document.getElementById("loadingBar") as HTMLElement;
-    // const percentLoaded = document.getElementById("percentLoaded") as HTMLElement;
-    // const stage = new CustomLoading(canvas, loader, loadingBar, percentLoaded);
+    const canvas = document.querySelector("canvas") as HTMLCanvasElement;
+    const stage = new CameraMechanics(canvas);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
       }
     });
-  },
-  methods: {
-    setLoaded() {
-      this.loaded = true;
-    },
   },
 });
 </script>
@@ -147,4 +92,3 @@ canvas {
   box-shadow: 8px 8px 10px -6px #000000;
 }
 </style>
-
