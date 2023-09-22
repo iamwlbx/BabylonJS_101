@@ -27,27 +27,54 @@ canvas {
   height: 70%;
 }
 </style> -->
+
 <template>
   <main>
-    <p>First Person Controller</p>
+    <!-- <div id="loader">
+      <p>Loading</p>
+
+      <div id="loadingContainer">
+        <div id="loadingBar"></div>
+      </div>
+
+      <p id="percentLoaded">25%</p>
+    </div> -->
+    <LoadingScreen :isLoaded="loaded" />
+    <p>Custom Loading Screen</p>
     <canvas></canvas>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LightsShadows } from "@/BabylonExamples/LightsShadows";
-
+import { CustomLoading } from "@/BabylonExamples/CustomLoading";
+import LoadingScreen from "./LoadingScreen.vue";
 export default defineComponent({
   name: "BabylonExamples",
+
+  data() {
+    return {
+      loaded: false,
+    };
+  },
+  components: { LoadingScreen },
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement; // !让vue知道这不会是空的
-    const stage = new LightsShadows(canvas); // if(canvas){ new BasicScene(canvas) }
+    const stage = new CustomLoading(canvas, this.setLoaded); // if(canvas){ new BasicScene(canvas) }
+    // const loader = document.getElementById("loader") as HTMLElement;
+    // const loadingBar = document.getElementById("loadingBar") as HTMLElement;
+    // const percentLoaded = document.getElementById("percentLoaded") as HTMLElement;
+    // const stage = new CustomLoading(canvas, loader, loadingBar, percentLoaded);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
       }
     });
+  },
+  methods: {
+    setLoaded() {
+      this.loaded = true;
+    },
   },
 });
 </script>

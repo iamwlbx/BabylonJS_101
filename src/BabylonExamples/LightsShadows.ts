@@ -37,7 +37,7 @@ export class LightsShadows {
     });
   }
   public resize(): void {
-    console.log("重绘中...");
+    // console.log("重绘中...");
 
     if (this.scene) {
       this.scene.getEngine().resize();

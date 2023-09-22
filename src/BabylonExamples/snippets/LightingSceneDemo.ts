@@ -35,7 +35,13 @@ export class LightSceneDemo {
       this.scene.render();
     });
   }
+  public resize(): void {
+    // console.log("重绘中...");
 
+    if (this.scene) {
+      this.scene.getEngine().resize();
+    }
+  }
   CreateScene(): Scene {
     const scene = new Scene(this.engine);
     const camera = new FreeCamera("camera", new Vector3(0, 1, -4), this.scene);
