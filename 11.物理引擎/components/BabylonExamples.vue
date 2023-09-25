@@ -7,14 +7,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CollisionsTriggers } from "@/BabylonExamples/CollisionsTriggers";
+import { PhysicsImpostors } from "@/BabylonExamples/PhysicsImpostors";
 
 export default defineComponent({
   name: "BabylonExamples",
 
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-    const stage = new CollisionsTriggers(canvas);
+    const stage = new PhysicsImpostors(canvas);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
