@@ -7,14 +7,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { MeshActions } from "@/BabylonExamples/MeshActions";
+import { FirstPersonController } from "@/BabylonExamples/FirstPersonController";
 
 export default defineComponent({
   name: "BabylonExamples",
 
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-    const stage = new MeshActions(canvas);
+    const stage = new FirstPersonController(canvas);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
