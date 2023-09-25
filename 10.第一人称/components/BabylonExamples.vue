@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { FirstPersonController } from "@/BabylonExamples/FirstPersonController";
+import { FirstPersonController } from "@/BabylonExamples/PhysicsImpostors";
 
 export default defineComponent({
   name: "BabylonExamples",
