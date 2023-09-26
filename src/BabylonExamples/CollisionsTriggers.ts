@@ -1,7 +1,7 @@
 // 碰撞和触发
-// 绑定碰撞,碰撞后,可以判断主元素和碰撞元素。
-// 碰撞后可以解除注册碰撞。
-// 触发分为mesh相交和射线相交。相交返回true，以此做判断
+// 绑定碰撞,碰撞后,可以判断主元素和碰撞元素。registerOnPhysicsCollide
+// 碰撞后可以解除注册碰撞。unregisterOnPhysicsCollide
+// 触发器，触发分为mesh相交和射线相交。相交返回true，以此做判断
 import {
   Scene,
   Engine,
