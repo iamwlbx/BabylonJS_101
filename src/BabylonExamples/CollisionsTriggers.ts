@@ -1,7 +1,7 @@
 // 碰撞和触发
 // 绑定碰撞,碰撞后,可以判断主元素和碰撞元素。registerOnPhysicsCollide
 // 碰撞后可以解除注册碰撞。unregisterOnPhysicsCollide
-// 触发器，触发分为mesh相交和射线相交。相交返回true，以此做判断
+// 触发器，触发分为mesh相交和射线相交。相交返回true，以此做判断。然后通过
 import {
   Scene,
   Engine,
@@ -36,7 +36,7 @@ export class CollisionsTriggers {
     // this.CreateController();
 
     this.CreateImpostors();
-    this.DetectTrigger();
+    // this.DetectTrigger();
     this.engine.runRenderLoop(() => {
       this.scene.render();
     });
@@ -87,18 +87,18 @@ export class CollisionsTriggers {
     // 实现物理模拟的重要组件
     // 物理模拟的包装器，可以附加到 Mesh 对象上。通过附加 PhysicsImpostor，
     // 可以使物体具有物理属性，使其可以受到引力、碰撞、力和其他物理效应的影响
-    // this.box = MeshBuilder.CreateBox("box", { size: 2 });
-    // this.box.position = new Vector3(0, 3, 0);
+    this.box = MeshBuilder.CreateBox("box", { size: 2 });
+    this.box.position = new Vector3(0, 3, 0);
 
-    // this.box.physicsImpostor = new PhysicsImpostor(
-    //   this.box,
-    //   PhysicsImpostor.BoxImpostor,
-    //   { mass: 1, restitution: 1 } // 回推力
-    // );
+    this.box.physicsImpostor = new PhysicsImpostor(
+      this.box,
+      PhysicsImpostor.BoxImpostor,
+      { mass: 1, restitution: 1 } // 回推力
+    );
 
     this.ground = MeshBuilder.CreateGround("ground", { width: 40, height: 40 });
     this.ground.position.y = 0.25;
-    this.ground.isVisible = false;
+    this.ground.isVisible = true;
     this.ground.physicsImpostor = new PhysicsImpostor(
       this.ground,
       PhysicsImpostor.BoxImpostor,
@@ -113,17 +113,17 @@ export class CollisionsTriggers {
       { mass: 1, restitution: 1, friction: 1 }
     );
 
-    // this.sphere.physicsImpostor.registerOnPhysicsCollide(
-    //   this.box.physicsImpostor,
-    //   this.DetectCollisions
-    // );
+    this.sphere.physicsImpostor.registerOnPhysicsCollide(
+      [this.box.physicsImpostor, this.ground.physicsImpostor],
+      this.DetectCollisions
+    );
     // // 碰撞之后取消注册该事件
-    // this.sphere.physicsImpostor.unregisterOnPhysicsCollide(
-    //   this.ground.physicsImpostor,
-    //   this.DetectCollisions
-    // )
+    this.sphere.physicsImpostor.unregisterOnPhysicsCollide(
+      this.box.physicsImpostor,
+      this.DetectCollisions
+    )
 
-    // this.box.physicsImpostor.registerOnPhysicsCollide(this.sphere.physicsImpostor, this.DetectCollisions);
+    // this.box.physicsImpostor.registerOnPhysicsCollide([this.sphere.physicsImpostor, this.ground.physicsImpostor], this.DetectCollisions);
 
     // 设置墙体
     // const wall1 = MeshBuilder.CreateBox("wall1", { width: 40, height: 6, depth: 0.1 });
@@ -155,7 +155,7 @@ export class CollisionsTriggers {
     const greenMat = new StandardMaterial("gmat", this.scene);
     redMat.diffuseColor = new Color3(1, 0, 0);
     greenMat.diffuseColor = new Color3(0, 1, 0);
-    // boxCol.object.scaling = new Vector3(3, 3, 3);
+    boxCol.object.scaling = new Vector3(3, 3, 3);
     // // 调用 setScalingUpdated 方法来告知物理引擎进行必要的处理，以确保物体的碰撞积体得到正确的更新。
     // boxCol.setScalingUpdated();
     // 将其作为抽象网格使用, 获得material的属性
