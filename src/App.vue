@@ -17,7 +17,7 @@ export default defineComponent({
 <style>
 #app {
   text-align: center;
-
-  margin-top: 60px;
+  height: 100%;
+  /* margin-top: 60px; */
 }
 </style>

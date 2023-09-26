@@ -1,20 +1,20 @@
 <template>
   <main>
-    <p>First Person Controller</p>
+    <!-- <p>First Person Controller</p> -->
     <canvas></canvas>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CollisionsTriggers } from "@/BabylonExamples/CollisionsTriggers";
+import { PhysicsVelocity } from "@/BabylonExamples/PhysicsVelocity";
 
 export default defineComponent({
   name: "BabylonExamples",
 
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-    const stage = new CollisionsTriggers(canvas);
+    const stage = new PhysicsVelocity(canvas);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
@@ -29,7 +29,8 @@ export default defineComponent({
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@100;700&display=swap");
 
 main {
-  width: 70%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +77,7 @@ main {
 }
 
 p {
-  color: white;
+  color: black;
   background: none;
   margin-bottom: 1rem;
   font-family: "Roboto Condensed";
