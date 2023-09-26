@@ -1,3 +1,6 @@
+// 物理速度也可说是某个方向给予的力的大小
+并且添加碰撞器
+
 import { Scene, Engine, SceneLoader, HemisphericLight, CubeTexture, FreeCamera, Vector3, CannonJSPlugin, MeshBuilder, PhysicsImpostor } from "@babylonjs/core";
 import "@babylonjs/loaders";
 import * as CANNON from "cannon";
