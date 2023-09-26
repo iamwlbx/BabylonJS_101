@@ -11,8 +11,11 @@
     "@babylonjs/core": "^4.2.0",
     "@babylonjs/loaders": "^4.2.0",
     "@types/cannon": "^0.1.10",
+    "ammo.js": "^0.0.10",
+    "ammojs-typed": "^1.0.6",
     "axios": "^1.5.0",
     "cannon": "^0.6.2",
+    "path-browserify": "^1.0.1",
     "vue": "^3.2.13"
   },
   "devDependencies": {
