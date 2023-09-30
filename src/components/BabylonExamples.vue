@@ -7,14 +7,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Animations } from "@/BabylonExamples/Animations";
+import { AnimEvents } from "@/BabylonExamples/AnimEvents";
 
 export default defineComponent({
   name: "BabylonExamples",
 
   mounted() {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-    const stage = new Animations(canvas);
+    const stage = new AnimEvents(canvas);
     window.addEventListener("resize", () => {
       if (stage) {
         stage.resize();
